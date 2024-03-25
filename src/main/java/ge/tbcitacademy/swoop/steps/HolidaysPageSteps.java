@@ -18,7 +18,6 @@ public class HolidaysPageSteps extends BasePageSteps{
     private int userPriceRangeStart;
     private final List<Integer> housePrices = new ArrayList<>();
     private final ListMultimap<String, String> headingDescPairs = ArrayListMultimap.create();
-    private Select select;
 
     public HolidaysPageSteps(WebDriver driver) {
         super(driver);
@@ -26,8 +25,8 @@ public class HolidaysPageSteps extends BasePageSteps{
         holidaysPage = new HolidaysPage(driver);
         softAssert = new SoftAssert();
     }
-    public void setPriceSelect() {
-        select = new Select(waitForElementToBeClickable(holidaysPage.filterSelect));
+    public Select getPriceSelect() {
+        return new Select(waitForElementToBeClickable(holidaysPage.filterSelect));
     }
     public void getHousePriceOrHouseDes(boolean getHousePriceData, boolean getHouseDescriptionData) {
         while (true) {
@@ -86,13 +85,11 @@ public class HolidaysPageSteps extends BasePageSteps{
         waitForSpinnerElementToAppearAndDisappear(holidaysPage.loadingDotsBy);
     }
     public void selectFilterAsc() {
-        setPriceSelect();
-        select.selectByValue(FILTER_ASCENDING_VALUE);
+        getPriceSelect().selectByValue(FILTER_ASCENDING_VALUE);
         waitForSpinnerElementToAppearAndDisappear(holidaysPage.loadingDotsBy);
     }
     public void selectFilterDesc() {
-        setPriceSelect();
-        select.selectByValue(FILTER_DESCENDING_VALUE);
+        getPriceSelect().selectByValue(FILTER_DESCENDING_VALUE);
         waitForSpinnerElementToAppearAndDisappear(holidaysPage.loadingDotsBy);
     }
     public void selectCheckBoxFilter() {
