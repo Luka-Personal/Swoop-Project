@@ -44,5 +44,6 @@ public class Constants {
     EXPECTED_EMAIL_ERROR_MSG = "მეილის ფორმატი არასწორია!",
     EMAIL_ERROR_MISMATCH_MSG = "Email error msg mismatch.";
     public static final int MIN_PRICE = 50,
-    MAX_PRICE = 70;
+    MAX_PRICE = 70,
+    DRIVER_WAIT_TIME = 10;
 }

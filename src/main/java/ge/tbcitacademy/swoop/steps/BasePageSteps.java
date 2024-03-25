@@ -17,7 +17,7 @@ public class BasePageSteps {
     protected BasePageSteps(WebDriver driver) {
         basePage = new BasePage(driver);
         this.driver = driver;
-        waitLong = new WebDriverWait(driver, Duration.ofSeconds(10));
+        waitLong = new WebDriverWait(driver, Duration.ofSeconds(DRIVER_WAIT_TIME));
         action = new Actions(driver);
         js = (JavascriptExecutor) driver;
         dismissCookieBanner();
@@ -50,8 +50,5 @@ public class BasePageSteps {
     }
     public WebElement waitForElementToAppear(WebElement element) {
         return waitLong.until(ExpectedConditions.visibilityOf(element));
-    }
-    public void sendKeysToElement(WebElement element, String string) {
-        element.sendKeys(string);
     }
 }
